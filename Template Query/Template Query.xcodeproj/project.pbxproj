@@ -13,6 +13,8 @@
 		8D004B5B21788E1C004F22F8 /* BuildSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D004B5A21788E1C004F22F8 /* BuildSettings.swift */; };
 		8D0FBAA221732F220002DF86 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0FBAA121732F220002DF86 /* Option.swift */; };
 		8D46E48821760710006351D5 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D46E48721760710006351D5 /* Target.swift */; };
+		8D64EFC6217FB21800BFE970 /* Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D64EFC5217FB21800BFE970 /* Definition.swift */; };
+		8D64EFC9217FC0CC00BFE970 /* CommonKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D64EFC8217FC0CC00BFE970 /* CommonKey.swift */; };
 		8DC91AE62171EC31007ED116 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC91AE52171EC31007ED116 /* main.swift */; };
 		8DC91AF02171ED86007ED116 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC91AEF2171ED86007ED116 /* CommandLine.swift */; };
 		8DC91AF22171EE29007ED116 /* Sanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC91AF12171EE29007ED116 /* Sanitizer.swift */; };
@@ -28,6 +30,8 @@
 		8D004B5A21788E1C004F22F8 /* BuildSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildSettings.swift; sourceTree = "<group>"; };
 		8D0FBAA121732F220002DF86 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		8D46E48721760710006351D5 /* Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
+		8D64EFC5217FB21800BFE970 /* Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definition.swift; sourceTree = "<group>"; };
+		8D64EFC8217FC0CC00BFE970 /* CommonKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonKey.swift; sourceTree = "<group>"; };
 		8DC91AE22171EC31007ED116 /* template-query */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "template-query"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC91AE52171EC31007ED116 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8DC91AED2171EC42007ED116 /* macOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = macOS.xcconfig; sourceTree = "<group>"; };
@@ -57,6 +61,14 @@
 				8D004B5A21788E1C004F22F8 /* BuildSettings.swift */,
 			);
 			path = Target;
+			sourceTree = "<group>";
+		};
+		8D64EFC7217FC0A200BFE970 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8D64EFC8217FC0CC00BFE970 /* CommonKey.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		8DC91AD92171EC31007ED116 = {
@@ -109,8 +121,10 @@
 			isa = PBXGroup;
 			children = (
 				8DC91AF521726911007ED116 /* Template.swift */,
+				8D64EFC5217FB21800BFE970 /* Definition.swift */,
 				8D0FBAA121732F220002DF86 /* Option.swift */,
 				8D004B5121785FE3004F22F8 /* Target */,
+				8D64EFC7217FC0A200BFE970 /* Utils */,
 				8D004B5021785F4E004F22F8 /* Types */,
 			);
 			path = Template;
@@ -196,7 +210,9 @@
 				8DC91AF22171EE29007ED116 /* Sanitizer.swift in Sources */,
 				8DC91AF42171F421007ED116 /* Detector.swift in Sources */,
 				8DC91AF621726911007ED116 /* Template.swift in Sources */,
+				8D64EFC9217FC0CC00BFE970 /* CommonKey.swift in Sources */,
 				8D0FBAA221732F220002DF86 /* Option.swift in Sources */,
+				8D64EFC6217FB21800BFE970 /* Definition.swift in Sources */,
 				8D46E48821760710006351D5 /* Target.swift in Sources */,
 				8D004B5321786011004F22F8 /* TargetBuild.swift in Sources */,
 				8D004B5B21788E1C004F22F8 /* BuildSettings.swift in Sources */,

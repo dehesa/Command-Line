@@ -2,7 +2,7 @@ import Foundation
 
 extension Template.Target.Build {
     /// Build dependencies.
-    public struct Dependencies: Codable, CustomStringConvertible {
+    public struct Dependencies: Codable {
         /// Dependencies of this project in the form of target identifiers.
         public var targets: [String]
         /// Frameworks that must be there for the target to build.
@@ -52,20 +52,6 @@ extension Template.Target.Build {
         /// Boolean indicating wether there are no dependencies.
         public var isEmpty: Bool {
             return self.targets.isEmpty && self.frameworks.isEmpty
-        }
-        
-        public var description: String {
-            var result: [String] = []
-            
-            if !self.targets.isEmpty {
-                result.append("targets: [" + self.targets.joined(separator: ", ") + "]")
-            }
-            
-            if !self.frameworks.isEmpty {
-                result.append("frameworks: [" + self.frameworks.joined(separator: ", ") + "]")
-            }
-            
-            return result.joined(separator: ", ")
         }
         
         private enum CodingKeys: String, CodingKey {

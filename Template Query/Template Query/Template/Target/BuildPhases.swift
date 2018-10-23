@@ -2,7 +2,7 @@ import Foundation
 
 extension Template.Target.Build {
     /// Build phases defined in the receiving target.
-    public struct Plan: MutableCollection, RandomAccessCollection, Codable, CustomStringConvertible {
+    public struct Plan: MutableCollection, RandomAccessCollection, Codable {
         /// Build phases contained in this build plan.
         ///
         /// The order of the build phases is important.
@@ -48,11 +48,6 @@ extension Template.Target.Build {
             for phase in self.phases {
                 try phase.encode(to: container.superEncoder())
             }
-        }
-        
-        public var description: String {
-            let result: [String] = self.phases.map { $0.description }
-            return "[" + result.joined(separator: ", ") + "]"
         }
         
         public var startIndex: Int {
@@ -120,7 +115,7 @@ extension Template.Target.Build {
     }
 }
 
-public protocol BuildPhase: Codable, CustomStringConvertible {
+public protocol BuildPhase: Codable {
     /// The type of build phase.
     var type: Template.Target.Build.Phase { get }
 }
@@ -129,7 +124,6 @@ extension Template.Target.Build.Plan {
     /// Build phase to include headers (whether public, project, or private).
     public struct Headers: BuildPhase {
         public let type: Template.Target.Build.Phase = .includeHeaders
-        public var description: String { return "Include headers" }
         /// Designated initializer.
         public init() {}
         
@@ -141,7 +135,6 @@ extension Template.Target.Build.Plan {
     /// Build phase to compile sources.
     public struct Sources: BuildPhase {
         public let type: Template.Target.Build.Phase = .compileSources
-        public var description: String { return "Compile sources" }
         /// Designated initializer.
         public init() {}
         
@@ -153,7 +146,6 @@ extension Template.Target.Build.Plan {
     /// Build phase to copy resources in the bundle target.
     public struct Resources: BuildPhase {
         public let type: Template.Target.Build.Phase = .copyResourcesToBundle
-        public var description: String { return "Copy resources to bundle" }
         /// Designated initializer.
         public init() {}
         
@@ -165,7 +157,6 @@ extension Template.Target.Build.Plan {
     /// Build phase to link libraries in the built project.
     public struct Frameworks: BuildPhase {
         public let type: Template.Target.Build.Phase = .linkBinaryWithLibraries
-        public var description: String { return "Link libraries" }
         /// Designated initializer.
         public init() {}
         
@@ -186,10 +177,6 @@ extension Template.Target.Build.Plan {
         public init(programURL: String = "/bin/sh", script: String) {
             self.programPath = programURL
             self.script = script
-        }
-        
-        public var description: String {
-            return "Run Scripts with \(self.programPath)"
         }
         
         private enum CodingKeys: String, CodingKey {
@@ -216,10 +203,6 @@ extension Template.Target.Build.Plan {
             self.destination = destination
             self.path = path
         }
-
-        public var description: String {
-            return "Copy files to \(self.path) (\(self.destination.description))"
-        }
         
         private enum CodingKeys: String, CodingKey {
             case type = "Class"
@@ -232,7 +215,7 @@ extension Template.Target.Build.Plan {
 
 extension Template.Target.Build.Plan.Files {
     /// The type of destination for the copy files build phase.
-    public enum Destination: Int, Codable, CustomStringConvertible {
+    public enum Destination: Int, Codable {
         case absolutePath = 0
         case productsDirectory
         case wrapper
@@ -244,21 +227,5 @@ extension Template.Target.Build.Plan.Files {
         case sharedSupport
         case plugIns
         case xpcServices
-        
-        public var description: String {
-            switch self {
-            case .absolutePath: return "Absolute Path"
-            case .productsDirectory: return "Products Directory"
-            case .wrapper: return "Wrapper"
-            case .executables: return "Executables"
-            case .resources: return "Resources"
-            case .javaResources: return "Java Resources"
-            case .frameworks: return "Frameworks"
-            case .sharedFrameworks: return "Shared Frameworks"
-            case .sharedSupport: return "Shared Support"
-            case .plugIns: return "Plug-Ins"
-            case .xpcServices: return "XPC Services"
-            }
-        }
     }
 }

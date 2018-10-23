@@ -2,7 +2,7 @@ import Foundation
 
 extension Template {
     /// Xcode project target definition.
-    public struct Target: Codable, CustomStringConvertible {
+    public struct Target: Codable {
         /// Unique identifier for the target.
         public var identifier: String?
         /// The name displayed on Xcode.
@@ -54,17 +54,6 @@ extension Template {
             try self.build.encode(to: encoder)
         }
         
-        public var description: String {
-            var result: [String] = []
-            if let identifier = self.identifier { result.append(identifier)}
-            if let name = self.name { result.append("name: " + name) }
-            if self.type != .regular { result.append("type: " + self.type.rawValue) }
-            if self.isAbstract { result.append("is abstract") }
-            if let productType = self.productType { result.append("product: " + productType.description) }
-            if !self.build.isEmpty { result.append("build: { " + self.build.description + " }") }
-            return result.joined(separator: ", ")
-        }
-        
         private enum CodingKeys: String, CodingKey {
             case identifier = "TargetIdentifier"
             case name = "Name"
@@ -85,7 +74,7 @@ extension Template.Target {
     }
     
     /// The type of product being built.
-    public enum ProductType: String, Codable, CustomStringConvertible {
+    public enum ProductType: String, Codable {
         case app = "com.apple.product-type.application"
         case appExtension = "com.apple.product-type.app-extension"
         case appWatch = "com.apple.product-type.application.watchapp2"
@@ -101,25 +90,5 @@ extension Template.Target {
         case tool = "com.apple.product-type.tool"
         case xcodeExtension = "com.apple.product-type.xcode-extension"
         case xpcService = "com.apple.product-type.xpc-service"
-        
-        public var description: String {
-            switch self {
-            case .app:                  return "Application"
-            case .appExtension:         return "Application Extension"
-            case .appWatch:             return "Watch Application"
-            case .watchKitExtension:    return "Watch Extension"
-            case .bundle:               return "Bundle"
-            case .bundleTestingUniTest: return "Unit-Test Bundle"
-            case .bundleTestingUI:      return "UI Testing Bundle"
-            case .framework:            return "Framework"
-            case .inAppPurchase:        return "In-App Purchase Content"
-            case .instrumentsPackage:   return "Instrument Package"
-            case .kernelExtension:      return "Kernel Extension"
-            case .metalLibrary:         return "Metal Library"
-            case .tool:                 return "Tool"
-            case .xcodeExtension:       return "Xcode Extension"
-            case .xpcService:           return "XPC Service"
-            }
-        }
     }
 }

@@ -2,7 +2,7 @@ import Foundation
 
 extension Template.Target {
     /// Build properties for the receiving target.
-    public struct Build: Codable, CustomStringConvertible {
+    public struct Build: Codable {
         /// Build settings.
         public var settings: Settings
         /// Build dependencies to create a target.
@@ -55,28 +55,6 @@ extension Template.Target {
                    self.tool == nil
         }
         
-        public var description: String {
-            var result: [String] = []
-            
-            if !self.settings.isEmpty {
-                result.append("settings: (" + self.settings.description + ")")
-            }
-            
-            if !self.dependencies.isEmpty {
-                result.append("dependencies: (" + self.dependencies.description + ")")
-            }
-            
-            if !self.phases.isEmpty {
-                result.append("phases: (" + self.phases.description + ")")
-            }
-            
-            if let tool = self.tool {
-                result.append("tool: " + tool.description)
-            }
-            
-            return result.joined(separator: ", ")
-        }
-        
         private enum CodingKeys: String, CodingKey {
             case phases = "BuildPhases"
             case toolPath = "BuildToolPath"
@@ -87,7 +65,7 @@ extension Template.Target {
 
 extension Template.Target.Build {
     /// Definition of a build tool.
-    public struct Tool: CustomStringConvertible {
+    public struct Tool {
         /// The path for the build tool.
         public var path: String
         /// The arguments to pass to the build tool.
@@ -96,12 +74,6 @@ extension Template.Target.Build {
         public init(path: String, args: String?) {
             self.path = path
             self.args = args
-        }
-        
-        public var description: String {
-            var result: String = path
-            if let arguments = args { result.append(" " + arguments) }
-            return result
         }
     }
 }
