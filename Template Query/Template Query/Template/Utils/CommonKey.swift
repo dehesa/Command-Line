@@ -23,7 +23,7 @@ internal struct CommonCodingKey: CodingKey {
 }
 
 /// Value on `Codable` where the type can only be a Boolean, Int, Double, or a String.
-internal struct CoreCodingValue: Codable {
+internal struct CoreCodingValue: Codable, Equatable {
     let content: Any
     
     init?(_ value: Any) {
@@ -73,6 +73,16 @@ internal struct CoreCodingValue: Codable {
         default:
             let context = EncodingError.Context(codingPath: container.codingPath, debugDescription: "The setting value couldn't be encoded.")
             throw EncodingError.invalidValue(self.content, context)
+        }
+    }
+    
+    static func == (lhs: CoreCodingValue, rhs: CoreCodingValue) -> Bool {
+        switch (lhs.content, rhs.content) {
+        case (let left as Bool, let right as Bool):     return left == right
+        case (let left as Int, let right as Int):       return left == right
+        case (let left as Double, let right as Double): return left == right
+        case (let left as String, let right as String): return left == right
+        default: return false
         }
     }
 }

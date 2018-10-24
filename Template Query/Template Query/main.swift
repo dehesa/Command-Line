@@ -20,12 +20,13 @@ for (url, plist) in files {
     
     for definition in highlevel as! [String:Any] {
         guard let value = definition.value as? [String:Any] else { continue }
-        guard let order = value["SubstituteMacros"] else { continue }
-        print(type(of: order))
-        print(order)
-//        print(definition.key)
-//        print(definition.value)
-//        print()
+        guard !value.contains(where: { (key, _) -> Bool in
+            key == "Beginning" || key == "AssetGeneration" || key == "Path"
+        }) else { continue }
+        print(definition.key)
+        print(definition.value)
+        print()
+//        print(value.keys.sorted().joined(separator: ", "))
     }
 }
 //print(Array(result).sorted().joined(separator: "\n"))
