@@ -32,9 +32,9 @@
 		8D46E48721760710006351D5 /* Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
 		8D64EFC5217FB21800BFE970 /* Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definition.swift; sourceTree = "<group>"; };
 		8D64EFC8217FC0CC00BFE970 /* CommonKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonKey.swift; sourceTree = "<group>"; };
+		8D676F78229082150054D656 /* macOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = macOS.xcconfig; sourceTree = "<group>"; };
 		8DC91AE22171EC31007ED116 /* template-query */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "template-query"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC91AE52171EC31007ED116 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		8DC91AED2171EC42007ED116 /* macOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = macOS.xcconfig; sourceTree = "<group>"; };
 		8DC91AEF2171ED86007ED116 /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
 		8DC91AF12171EE29007ED116 /* Sanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sanitizer.swift; sourceTree = "<group>"; };
 		8DC91AF32171F421007ED116 /* Detector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detector.swift; sourceTree = "<group>"; };
@@ -71,11 +71,19 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		8D676F77229082150054D656 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				8D676F78229082150054D656 /* macOS.xcconfig */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		8DC91AD92171EC31007ED116 = {
 			isa = PBXGroup;
 			children = (
-				8DC91AEC2171EC42007ED116 /* Configuration */,
-				8DC91AE42171EC31007ED116 /* Template Query */,
+				8D676F77229082150054D656 /* Configuration */,
+				8DC91AE42171EC31007ED116 /* Source */,
 				8DC91AE32171EC31007ED116 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,23 +96,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8DC91AE42171EC31007ED116 /* Template Query */ = {
+		8DC91AE42171EC31007ED116 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				8DC91AE52171EC31007ED116 /* main.swift */,
 				8DC91AF721727D2E007ED116 /* Template */,
 				8DC91AEE2171ED7C007ED116 /* Utils */,
 			);
-			path = "Template Query";
-			sourceTree = "<group>";
-		};
-		8DC91AEC2171EC42007ED116 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				8DC91AED2171EC42007ED116 /* macOS.xcconfig */,
-			);
-			name = Configuration;
-			path = "../Git Update/Configuration";
+			path = Source;
 			sourceTree = "<group>";
 		};
 		8DC91AEE2171ED7C007ED116 /* Utils */ = {
@@ -170,6 +169,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 8DC91AD92171EC31007ED116;
 			productRefGroup = 8DC91AE32171EC31007ED116 /* Products */;
@@ -343,7 +343,7 @@
 		};
 		8DC91AEA2171EC31007ED116 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8DC91AED2171EC42007ED116 /* macOS.xcconfig */;
+			baseConfigurationReference = 8D676F78229082150054D656 /* macOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V4LZL56CA7;
@@ -352,7 +352,7 @@
 		};
 		8DC91AEB2171EC31007ED116 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8DC91AED2171EC42007ED116 /* macOS.xcconfig */;
+			baseConfigurationReference = 8D676F78229082150054D656 /* macOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V4LZL56CA7;

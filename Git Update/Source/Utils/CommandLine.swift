@@ -5,8 +5,8 @@ extension CommandLine {
     /// - parameter flag: String to be matched exactly within the arguments array.
     /// - returns: A string if the flag was found, in which case it will be the parameter right after the flag.
     internal static func parameter(for flag: String) -> String? {
-        let arguments = CommandLine.arguments
-        guard let flagIndex = arguments.index(of: flag) else { return nil }
+        let arguments: [String] = CommandLine.arguments
+        guard let flagIndex = arguments.firstIndex(of: flag) else { return nil }
         
         let parameterIndex = arguments.index(after: flagIndex)
         guard parameterIndex < arguments.endIndex else { return "" }

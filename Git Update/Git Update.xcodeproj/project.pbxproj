@@ -28,7 +28,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8DC91AB92171E9B7007ED116 /* template-query */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "template-query"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DC91AB92171E9B7007ED116 /* git-update */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "git-update"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC91ABC2171E9B7007ED116 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8DC91AC42171EA19007ED116 /* macOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = macOS.xcconfig; sourceTree = "<group>"; };
 		8DC91AC52171EAC5007ED116 /* Detector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Detector.swift; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		8DC91ABA2171E9B7007ED116 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DC91AB92171E9B7007ED116 /* template-query */,
+				8DC91AB92171E9B7007ED116 /* git-update */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,7 +112,7 @@
 			);
 			name = "git-update";
 			productName = GitUpdate;
-			productReference = 8DC91AB92171E9B7007ED116 /* template-query */;
+			productReference = 8DC91AB92171E9B7007ED116 /* git-update */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -136,6 +136,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 8DC91AB02171E9B7007ED116;
 			productRefGroup = 8DC91ABA2171E9B7007ED116 /* Products */;

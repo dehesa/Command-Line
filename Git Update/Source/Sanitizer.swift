@@ -2,9 +2,10 @@ import Foundation
 
 /// Namespace for the sanitizer functions.
 enum Sanitizer {
-    /// Parses the Command-Line arguments for the targeted forlder path.
-    /// - parameters arguments: The Command-Line arguments. The first one shall be the name of the program.
-    static func parse(arguments: [String]) -> URL {
+    /// Retrieve the root directory from the given arguments. If no arguments define the root directory, the current working directory is inferred.
+    /// - parameter arguments: The Command-Line arguments. The first argument shall be the name of the program.
+    /// - returns: A directory URL.
+    static func rootDirectory(from arguments: [String]) -> URL {
         guard arguments.count > 1 else {
             let pwd = FileManager.default.currentDirectoryPath
             return URL(fileURLWithPath: pwd, isDirectory: true)
@@ -26,8 +27,7 @@ enum Sanitizer {
             exit(EXIT_FAILURE)
         }
         
-        // TODO: Validate that the url points to a folder
-        
+        // TODO: Validate that the url points to a folder.
         return result
     }
 }

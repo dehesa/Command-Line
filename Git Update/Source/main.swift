@@ -1,6 +1,8 @@
 import Foundation
 
-let targetURL = Sanitizer.parse(arguments: CommandLine.arguments)
+// Retrieve the root directory from which to update all git projects.
+let targetURL = Sanitizer.rootDirectory(from: CommandLine.arguments)
+// Find (recursively) all git projects to update.
 let projectURLs = Detector.gitProjects(from: targetURL).sorted {
     let components: (left: [String], right: [String]) = ($0.pathComponents, $1.pathComponents)
     

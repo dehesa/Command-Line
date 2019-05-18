@@ -105,7 +105,7 @@ enum Detector {
 private extension Detector {
     /// Makes an error thrown by the detector.
     static func makeError(code: Int, message: String, function: String = #function, file: String = #file, line: Int = #line) -> NSError {
-        let domain = "me.dehesa.cmd.git"
+        let domain = "io.dehesa.cmd.git"
         let funcKey = domain + ".function"
         let fileKey = domain + ".file"
         let lineKey = domain + ".line"
